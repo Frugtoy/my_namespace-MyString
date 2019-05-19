@@ -39,11 +39,9 @@
      { 
         std::cerr << e.what() << '\n';
      }
-     
-   //  MyString numb("-327");
-   //  cout<<endl<<"get number of"<<numb<<"--->"<<numb.get_number()<<endl;
-     MyString k ;
-     k = 2;
-     cout<<k;
-     return 0;
+   
+      MyString k;
+      k = -2;
+      cout<<endl<<"the string by numb is: " <<k<<endl;
+   return 0;
 }

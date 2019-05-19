@@ -163,8 +163,9 @@ MyString MyString::reverse()
 	 }
 	 MyString& MyString::operator+=(const char *string)//a+="kyky"
 	 {
-		 cout <<"&&&&&string operator +&&&&&"<<endl;
-		 MyString str(string);;
+		 cout <<"&&&&&string operator +=&&&&&"<<endl;
+		 MyString str(string);
+		 *this = *this+ str;
 		 this->_changed = true;
 		 this->set_hash();
 		 return *this;//(this +string)??
@@ -331,19 +332,21 @@ MyString MyString::reverse()
 			return result;
 	  }
       
-		MyString&  MyString:: operator =(int number)  {
+		MyString&  MyString::operator=(int number)  {
 
 			 if (number == 0) {
 				 MyString buf("0");
 				 *this = buf;
+				 return *this;
 			 }
 			 else {
 			 	int k =number;
 			 	int razryad = 1;
 			 	int tail =1;
+				MyString buf;
 			 	if(number < 0)
 			 	{
-					 *this = "-";
+					 buf = "-";
 					 number*=-1;
 				}
 			 	while(k/10!=0)
@@ -352,48 +355,47 @@ MyString MyString::reverse()
 					 k/=10;
 					 tail*=10;
 			 	}
-			 	while (number) {
+	
+			 	do {
 				 switch (number / tail) {
 			     case 0 : {
-				    *this+="0";
+				    buf+="0";
 				   break;
 				   }
 					 case 1 : {
-				    *this+="1";
+				    buf+="1";
 				   break;
 				   }
 					 case 2 : {
-				   *this+="2";
-					 cout<<"2";
-					 cout<<*this;
+				   buf+="2";
 				   break;
 				   }
 					 case 3 : {
-				   *this+="3";
+				   buf+="3";
 				   break;
 				   }
 					 case 4 : {
-				   *this+="4";
+				   buf+="4";
 				   break;
 				   }
 					 case 5 : {
-				   *this+="5";
+				   buf+="5";
 				   break;
 				   }
 					 case 6 : {
-				   *this+="6";
+				   buf+"6";
 				   break;
 				   }
 					 case 7 : {
-				   *this+="7";
+				   buf+="7";
 				   break;
 				   }
 					 case 8 : {
-				   *this+="8";
+				   buf+="8";
 				   break;
 				   }
 					 case 9 : {
-				   *this +="9";
+				   buf+="9";
 				   break;
 				   }
 			     default: {
@@ -402,13 +404,12 @@ MyString MyString::reverse()
 				   }
 			   }
 				 number = number % tail;
-				 if(number == 0) {   //like a tail from 5000 
-					 for(int i =0; i <razryad; ++i)
-					 		 *this+="0"; 
-				 }
 				 tail/=10;
+				 razryad --;
+				 
 			 }
-		 }
-
-		 return *this;
+			 while (razryad);
+			 *this = buf;
 		}
+		 return *this;
+}
