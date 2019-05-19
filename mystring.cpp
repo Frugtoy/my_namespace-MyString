@@ -1,4 +1,3 @@
-//#include "stdafx.h"
 #include "mystring.h"
 #include <exception>
 using std::runtime_error;
@@ -70,7 +69,7 @@ unsigned  int MyString::getsize()
 bool MyString::isEmpty()
 {
 	cout<<"&&&&isempty check&&&&"<<endl;
-	if(this->_size!=0 )//&& this->data!=NULL)?? im not sure about data...
+	if(this->_size!=0 )
 	  return false;
 	else 
 	  return true;
@@ -83,7 +82,7 @@ MyString MyString::reverse()
     char swElem = 'o';
 	  if (this->getsize()%2==0)
 	  {
-      	for(unsigned long int i =0;i<this->getsize()/2;i++) //+++-sss\0(8)
+      	for(unsigned long int i =0;i<this->getsize()/2;i++) 
 	  	{
 				swElem = this->_data[i];
 				this->_data[i]=this->_data[this->getsize()-(i+1)];
@@ -92,7 +91,7 @@ MyString MyString::reverse()
 		}
 	 else
 	 {
-	      	for(unsigned long int i =0;i < this->getsize()/2;i++) //+++sss\0(7)
+	      	for(unsigned long int i =0;i < this->getsize()/2;i++) 
 	  	    {
 						swElem = this->_data[i];
 						this->_data[i]=this->_data[this->getsize()-k];
@@ -105,7 +104,7 @@ MyString MyString::reverse()
 	 return *this;
 	}
 
-    MyString MyString::operator+ ( MyString &string)//a+b+
+    MyString MyString::operator+ ( MyString &string)
 	{
 		cout <<"&&&&simple operator +&&&&"<<endl;
 	

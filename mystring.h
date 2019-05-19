@@ -13,7 +13,7 @@ class MyString
 {
    public:
             
-	 MyString();//constructor+
+	 MyString();//constructor (+)
 	 MyString(const MyString&string);//cpy+
 	 MyString(const char* string);//cpy+
 	 MyString& operator=(int number);
